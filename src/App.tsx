@@ -9,8 +9,9 @@ const App = () => {
   const [modalOpen, setOpen] = useState(false);
   const [first, setFirst] = useState('');
   const [last, setLast] = useState('');
+  const [note, setNote] = useState('');
   const [people, setPeople] = useState([
-    { firstname: 'Default', lastname: 'Entry', status: 0, id: 0 }
+    { firstname: 'Default', lastname: 'Entry', status: 0, id: 0, note: '' }
   ]);
 
   const modalStyles = {
@@ -25,10 +26,11 @@ const App = () => {
   };
 
   const clear = () => {
-      setLast('');
-      setFirst('');
-      setOpen(false);
-  }
+    setLast('');
+    setFirst('');
+    setNote('');
+    setOpen(false);
+  };
 
   const addApplicant = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -37,11 +39,12 @@ const App = () => {
       {
         firstname: first,
         lastname: last,
+        note: note,
         status: 0,
         id: people.length
       }
     ]);
-    clear()
+    clear();
   };
 
   const movePerson = (id: number) => {
@@ -93,17 +96,24 @@ const App = () => {
       >
         <h2>Bewerber:in hinzufügen</h2>
         <form onSubmit={addApplicant}>
-          <label id={'first'}>Vorname</label>
+          <label id={'first'}>Vorname <span>*</span></label>
           <input
+            required
             aria-labelledby={'first'}
             type={'text'}
             onChange={(e) => setFirst(e.target.value)}
           />
-          <label id={'last'}>Nachname</label>
+          <label id={'last'}>Nachname <span>*</span></label>
           <input
+            required
             aria-labelledby={'last'}
             type={'text'}
             onChange={(e) => setLast(e.target.value)}
+          />
+          <label id={'note'}>Notiz</label>
+          <textarea
+            aria-labelledby={'note'}
+            onChange={(e) => setNote(e.target.value)}
           />
           <input
             type={'submit'}

@@ -54,25 +54,39 @@ form {
   grid-template-columns: 1fr 1fr;
   grid-gap: 1rem;
 }
+form label span {
+  color: #d81b5d;
+  font-weight: bold;
+}
 form label,
-form input[type='text'] {
+form input[type='text'],
+form textarea {
   grid-column: 1 / span 2;
+  font-family: Lexend, sans-serif;
 }
-form label {
-  margin-top: 1rem;
-}
-form input[type='text'] {
+form input[type='text'],
+form textarea {
   padding: 0.5rem 1rem;
   border-radius: 0.2rem;
+  border: 1px solid #efefef;
+  background-color: #efefef;
+  transition: border 0.3s ease;
+}
+form input[type='text']:focus,
+form input[type='text']:hover,
+form textarea:focus,
+form textarea:hover {
   border: 1px solid #707070;
 }
-form input[type='text']:not(:first-of-type) {
-  margin-bottom: 1rem;
+form input[type='text'],
+form textarea,
+h2 {
+  margin-bottom: 1.5rem;
 }
 form input[type='submit'] {
   grid-column: 2 / span 1;
 }
 form button {
   grid-column: 1 / span 1;
-  grid-row: 5 / span 1;
+  grid-row: 7 / span 1;
 }

@@ -1,3 +1,4 @@
+import React from 'react';
 import { FunctionComponent } from 'react';
 import * as S from '../styles/lists';
 
@@ -14,10 +15,10 @@ const List: FunctionComponent<ListProps> = (props) => {
       <ul>
         {props.people.map((person) => (
           <li key={person.id}>
-            <span className="img" />
-            <p>
+            <h3>
               {person.firstname} {person.lastname}
-            </p>
+            </h3>
+            <p>{person.note}</p>
             <button
               onClick={() => props.movePerson(person.id)}
               disabled={person.status === 2}
